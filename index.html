@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>YouTube AI Studio</title>
+  <meta name="description" content="Studio web pour préparer des vidéos YouTube avec IA : idée, script, storyboard, voix, sous-titres et export." />
+  <style>
+    :root{--bg:#0b0d12;--panel:#131722;--soft:#1b2130;--text:#f4f6fb;--muted:#9aa4b2;--accent:#ff2d2d;--line:#252c3a;--ok:#33d17a}*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#090b10,#0f1219);color:var(--text)}button,input,select,textarea{font:inherit}.shell{max-width:1180px;margin:auto;padding:24px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:20px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:22px}.logo{width:38px;height:28px;border-radius:9px;background:var(--accent);display:grid;place-items:center;box-shadow:0 0 24px #ff2d2d44}.logo:after{content:"▶";font-size:14px}.badge{font-size:12px;color:#ffd4d4;border:1px solid #ff2d2d66;background:#ff2d2d18;padding:6px 9px;border-radius:999px}.grid{display:grid;grid-template-columns:380px 1fr;gap:18px}.panel{background:rgba(19,23,34,.92);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 18px 50px #0004}.panel h2,.panel h3{margin-top:0}.field{margin-bottom:14px}.field label{display:block;font-size:13px;color:#c7cfda;margin-bottom:7px}.field input,.field select,.field textarea{width:100%;border:1px solid #31394a;background:#0f131c;color:white;border-radius:12px;padding:12px;outline:none}.field textarea{min-height:112px;resize:vertical}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.primary,.secondary{border:0;border-radius:12px;padding:12px 15px;cursor:pointer;font-weight:700}.primary{background:var(--accent);color:#fff}.secondary{background:var(--soft);color:#eef2f7;border:1px solid #31394a}.primary:disabled{opacity:.55;cursor:not-allowed}.hint{color:var(--muted);font-size:12px;line-height:1.5}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.tab{border:1px solid #303747;background:#111620;color:#cbd3df;border-radius:10px;padding:9px 12px;cursor:pointer}.tab.active{background:#fff;color:#111;border-color:#fff}.output{min-height:560px}.empty{min-height:520px;display:grid;place-items:center;text-align:center;color:var(--muted)}.empty .icon{font-size:44px;margin-bottom:12px}.script{white-space:pre-wrap;line-height:1.7;background:#0e131c;border:1px solid var(--line);padding:16px;border-radius:14px}.scene{display:grid;grid-template-columns:70px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}.scene:last-child{border-bottom:0}.scene-num{width:56px;height:56px;border-radius:14px;background:#1a2231;display:grid;place-items:center;font-weight:800;color:#fff}.scene p{margin:5px 0;color:#d7dde6;line-height:1.5}.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{font-size:12px;background:#1a2231;border:1px solid #2c3547;color:#c6d0de;border-radius:999px;padding:5px 8px}.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0}.status{display:flex;align-items:center;gap:8px;color:#b9c3d0;font-size:13px}.dot{width:8px;height:8px;border-radius:50%;background:var(--ok)}.preview{aspect-ratio:16/9;background:radial-gradient(circle at 30% 20%,#27324b,#0c1119 60%);border:1px solid #2b3445;border-radius:16px;display:grid;place-items:center;overflow:hidden;padding:28px;text-align:center}.preview h1{font-size:clamp(26px,4vw,56px);margin:0;max-width:850px}.preview p{color:#ccd4df;max-width:700px}.footer{margin-top:16px;color:#7f8998;font-size:12px;text-align:center}@media(max-width:880px){.grid{grid-template-columns:1fr}.output{min-height:420px}.empty{min-height:360px}.shell{padding:14px}.topbar{align-items:flex-start;flex-direction:column}.row{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="topbar">
+      <div class="brand"><span class="logo"></span>YouTube AI Studio <span class="badge">Prototype fonctionnel</span></div>
+      <div class="status"><span class="dot"></span>Projet sauvegardé localement</div>
+    </div>
+
+    <div class="grid">
+      <section class="panel">
+        <h2>Créer une vidéo</h2>
+        <div class="field"><label for="topic">Sujet</label><textarea id="topic" placeholder="Ex. Les 7 mystères les plus étranges de l’océan"></textarea></div>
+        <div class="row">
+          <div class="field"><label for="platform">Format</label><select id="platform"><option>YouTube 16:9</option><option>YouTube Shorts 9:16</option><option>TikTok 9:16</option></select></div>
+          <div class="field"><label for="duration">Durée</label><select id="duration"><option value="60">1 min</option><option value="180">3 min</option><option value="300" selected>5 min</option><option value="600">10 min</option></select></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="lang">Langue</label><select id="lang"><option>Français</option><option>Arabe</option><option>Anglais</option></select></div>
+          <div class="field"><label for="tone">Style</label><select id="tone"><option>Dynamique</option><option>Documentaire</option><option>Storytelling</option><option>Éducatif</option><option>Mystère</option></select></div>
+        </div>
+        <div class="field"><label for="voice">Voix</label><select id="voice"><option>Voix masculine naturelle</option><option>Voix féminine naturelle</option><option>Voix grave documentaire</option><option>Voix énergique</option></select></div>
+        <button class="primary" id="generate">Générer le projet vidéo</button>
+        <p class="hint">Cette première version génère le script, le storyboard, les sous-titres et un plan de montage. L’intégration aux modèles IA et au rendu MP4 sera branchée ensuite via API sécurisée.</p>
+      </section>
+
+      <section class="panel output">
+        <div class="tabs">
+          <button class="tab active" data-tab="preview">Aperçu</button>
+          <button class="tab" data-tab="script">Script</button>
+          <button class="tab" data-tab="storyboard">Storyboard</button>
+          <button class="tab" data-tab="captions">Sous-titres</button>
+        </div>
+        <div id="content" class="empty"><div><div class="icon">🎬</div><h3>Ton studio est prêt</h3><p>Saisis un sujet puis lance la génération.</p></div></div>
+      </section>
+    </div>
+    <div class="footer">YouTube AI Studio — génération assistée, export projet JSON + SRT</div>
+  </main>
+
+<script>
+const $=s=>document.querySelector(s);const $$=s=>[...document.querySelectorAll(s)];
+let project=JSON.parse(localStorage.getItem('ytAiProject')||'null');let active='preview';
+const content=$('#content');
+const esc=s=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+function sentences(topic,tone){
+ const hooks={Dynamique:`Aujourd’hui, on va découvrir ${topic} — et le dernier point risque de te surprendre.`,Documentaire:`Voici ce qu’il faut comprendre sur ${topic}, à partir d’une progression claire et structurée.`,Storytelling:`Tout commence avec une question simple : que se cache-t-il vraiment derrière ${topic} ?`,Éducatif:`En quelques minutes, tu vas comprendre l’essentiel de ${topic}, simplement et sans jargon.`,Mystère:`Il existe des détails troublants autour de ${topic} que beaucoup de gens ignorent.`};
+ return [hooks[tone]||hooks.Dynamique,`D’abord, posons le contexte. ${topic} est un sujet qui devient beaucoup plus intéressant lorsqu’on regarde les faits, les mécanismes et les conséquences concrètes.`,`Premier point : il faut distinguer ce que l’on sait, ce que l’on suppose et ce qui reste encore à vérifier. C’est ce qui permet d’éviter les raccourcis et de garder une narration crédible.`,`Deuxième point : les exemples concrets sont essentiels. Une bonne vidéo alterne explication, illustration visuelle et transition courte pour maintenir l’attention.`,`Troisième point : le spectateur doit toujours savoir pourquoi l’information suivante compte. Chaque partie doit donc répondre à une question précise et préparer la suivante.`,`En résumé, ${topic} devient beaucoup plus clair lorsqu’on le découpe en idées simples, preuves, exemples et conclusions. Si cette vidéo t’a aidé, abonne-toi pour la suite.`];
+}
+function buildProject(){
+ const topic=$('#topic').value.trim();if(!topic){alert('Entre d’abord un sujet.');return}
+ const duration=+$('#duration').value,tone=$('#tone').value,lang=$('#lang').value,platform=$('#platform').value,voice=$('#voice').value;
+ const base=sentences(topic,tone);const target=Math.max(6,Math.round(duration/35));const script=[];for(let i=0;i<target;i++)script.push(base[i%base.length]);
+ const sceneLen=Math.max(12,Math.round(duration/target));const scenes=script.map((text,i)=>({n:i+1,start:i*sceneLen,end:Math.min(duration,(i+1)*sceneLen),voice:text,visual:i===0?`Titre fort + plan cinématique lié à « ${topic} »`:`Illustration dynamique du point ${i} : B-roll, chiffres clés et mots importants à l’écran`,transition:i%2?'Zoom doux':'Cut rapide'}));
+ project={title:topic,platform,duration,tone,lang,voice,script:script.join('\n\n'),scenes,createdAt:new Date().toISOString()};localStorage.setItem('ytAiProject',JSON.stringify(project));active='preview';setActive();render();
+}
+function srtTime(sec){const h=String(Math.floor(sec/3600)).padStart(2,'0'),m=String(Math.floor(sec%3600/60)).padStart(2,'0'),s=String(Math.floor(sec%60)).padStart(2,'0');return `${h}:${m}:${s},000`}
+function download(name,text,type='text/plain'){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();URL.revokeObjectURL(a.href)}
+function setActive(){$$('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===active))}
+function render(){if(!project)return;
+ if(active==='preview') content.innerHTML=`<div class="preview"><div><div class="chip" style="display:inline-block;margin-bottom:14px">${esc(project.platform)} • ${Math.round(project.duration/60)} min</div><h1>${esc(project.title)}</h1><p>${esc(project.scenes[0].voice)}</p></div></div><div class="toolbar"><button class="secondary" onclick="exportJSON()">Exporter le projet JSON</button><button class="secondary" onclick="exportSRT()">Exporter les sous-titres SRT</button></div><p class="hint">Aperçu de structure : le rendu vidéo réel sera ajouté via un moteur de génération d’images/vidéos, synthèse vocale et assemblage serveur.</p>`;
+ if(active==='script') content.innerHTML=`<div class="toolbar"><button class="secondary" onclick="copyScript()">Copier le script</button></div><div class="script">${esc(project.script)}</div>`;
+ if(active==='storyboard') content.innerHTML=project.scenes.map(s=>`<div class="scene"><div class="scene-num">${s.n}</div><div><div class="chips"><span class="chip">${srtTime(s.start).slice(3,8)} → ${srtTime(s.end).slice(3,8)}</span><span class="chip">${esc(s.transition)}</span></div><p><strong>Voix :</strong> ${esc(s.voice)}</p><p><strong>Visuel :</strong> ${esc(s.visual)}</p></div></div>`).join('');
+ if(active==='captions') content.innerHTML=`<div class="toolbar"><button class="secondary" onclick="exportSRT()">Télécharger .srt</button></div><div class="script">${esc(makeSRT())}</div>`;
+}
+function makeSRT(){return project.scenes.map((s,i)=>`${i+1}\n${srtTime(s.start)} --> ${srtTime(s.end)}\n${s.voice}\n`).join('\n')}
+window.exportJSON=()=>download('youtube-ai-project.json',JSON.stringify(project,null,2),'application/json');window.exportSRT=()=>download('subtitles.srt',makeSRT());window.copyScript=()=>navigator.clipboard.writeText(project.script);
+$('#generate').addEventListener('click',buildProject);$$('.tab').forEach(b=>b.addEventListener('click',()=>{active=b.dataset.tab;setActive();render()}));
+if(project){$('#topic').value=project.title;render()}
+</script>
+</body>
+</html>
